@@ -65,7 +65,13 @@ const renderStarship
         for (let i = 0; i < pilots.length; i++){
             // pilots.innerHTML = `<li> item </li>`
 
-            const pilot = document.createElement("li")
+            const pilot = document.createElement("button")
+
+            pilot.addEventListener("click", () => {
+                window.location.href = `/character.html?id=${pilots[i].id}`
+            })
+
+
             pilot.textContent = pilots[i].name
             pilotsList.appendChild(pilot)
 
