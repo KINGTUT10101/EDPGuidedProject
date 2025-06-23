@@ -54,7 +54,8 @@ function renderPlanet(planet, characters, films) {
     charactersUl.innerHTML = characters.map(c => 
         `<li><a href="/character.html?id=${c.id}">${c.name}</a></li>`
     ).join("");
-
+    console.log("Fetched films:", films);
+    filmsUl.innerHTML = "<li>TEST FILM</li>";  // just to test DOM
     filmsUl.innerHTML = films.map(f =>
         `<li><a href="/film.html?id=${f.id}">${f.title}</a></li>`
     ).join("");
