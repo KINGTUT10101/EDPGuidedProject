@@ -1,19 +1,17 @@
-let nameH1;
-let birthYearSpan;
-let heightSpan;
-let massSpan;
-let filmsDiv;
-let planetDiv;
+let mglt;
+let starshipClass;
+let hyperdriveRating;
+let pilotsList;
+
 const baseUrl = `http://localhost:9001/api`;
 
-// Runs on page load
 addEventListener('DOMContentLoaded', () => {
-    nameH1 = document.querySelector('h1#name');
+
     mglt = document.querySelector('span#mglt');
     starshipClass = document.querySelector('span#starship-class');
     hyperdriveRating = document.querySelector('span#hyperdrive-rating');
     pilotsList = document.querySelector('ul#pilotsList');
-    
+
     const sp = new URLSearchParams(window.location.search)
     const id = sp.get('id')
     getStarship(id)
@@ -22,13 +20,13 @@ addEventListener('DOMContentLoaded', () => {
 async function getStarship(id) {
     let starship;
     let pilots;
+
     try {
         starship = await fetchStarshipId(id)
 
-
         pilots = await fetchShipPilots(id
 
-            )
+        )
     }
     catch (ex) {
         console.error(`Error reading starship
@@ -54,7 +52,7 @@ async function fetchShipPilots(id) {
 const renderStarship
     = (starship, pilots) => {
         document.title = `SWAPI - ${starship
-            ?.name}`;  // Just to make the browser tab say their name
+            ?.starship_class}`;
         mglt.textContent = starship
             ?.MGLT;
         starshipClass.textContent = starship
@@ -62,19 +60,31 @@ const renderStarship
         hyperdriveRating.textContent = starship
             ?.hyperdrive_rating;
 
-        for (let i = 0; i < pilots.length; i++){
-            // pilots.innerHTML = `<li> item </li>`
+        //Display list of associated pilots if any else show a placeholder
 
-            const pilot = document.createElement("button")
+        if (pilots.length === 0) {
 
-            pilot.addEventListener("click", () => {
-                window.location.href = `/character.html?id=${pilots[i].id}`
-            })
+            const noPilotsMessage = document.createElement("h3")
+            noPilotsMessage.textContent = "Information relating to this ship's pilots is missing"
 
+            const obiWanImpossibleImg = document.createElement("img")
+            obiWanImpossibleImg.src = "images/obiwanimpossible.jpg"
 
-            pilot.textContent = pilots[i].name
-            pilotsList.appendChild(pilot)
+            pilotsList.appendChild(noPilotsMessage);
+            pilotsList.appendChild(obiWanImpossibleImg);
 
+        } else {
+
+            for (let i = 0; i < pilots.length; i++) {
+                const li = document.createElement("li");
+                const link = document.createElement("a");
+
+                link.textContent = pilots[i].name;
+                link.href = `/character.html?id=${pilots[i].id}`;
+
+                li.appendChild(link);
+                pilotsList.appendChild(li);
             }
-       
+        }
+
     }
