@@ -84,7 +84,16 @@ const renderFilm = film => {
 
   directorSpan.textContent = film?.director;
 
-  const producersList = film?.producer?.split(",")?.map(item => item.trim ())?.map(producer => `<li>${producer}</li>`)
+  const producersList = film?.producer?.split(",")?.map(item => item.trim ())?.map(producer => `
+    <li>
+      <p class="tooltip">
+        ${producer}
+        <span class="tooltiptext">No data to show!</span>
+      </p>
+    </li>
+  `);
+
+
   producersDiv.innerHTML = producersList.join("");
 
   const charactersList = film?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)

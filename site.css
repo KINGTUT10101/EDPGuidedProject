@@ -11,6 +11,8 @@ body, div, h1, h2, h3, h4, h5, p, ul {
   --light1: #fff;
   --dark2: #003366;
   --light2: #cce0ff;
+  --invalidlight: red;
+  --invaliddark: darkred;
   background-color: var(--light1);
   color: var(--dark1);
 }
@@ -44,6 +46,7 @@ label {
 }
 
 /* Character list layout */
+#contentList,
 #charactersList {
   display: flex;
   flex-wrap: wrap;
@@ -52,6 +55,7 @@ label {
   margin-top: 20px;
 }
 
+#contentList div,
 #charactersList div {
   padding: 10px 15px;
   margin: 10px;
@@ -85,6 +89,7 @@ h1#name, h1#planet-name, h1#title {
   margin: 20px auto;
 }
 
+#crawl_section p,
 #generalInfo p {
   padding: 20px;
   margin: 10px;
@@ -98,28 +103,24 @@ h1#name, h1#planet-name, h1#title {
   font-size: 1.1em;
 }
 
-/* Section layout and spacing */
-section {
-  margin: 40px auto;
-  max-width: 600px;
+section#planets,
+section#characters,
+section#films {
+  margin: 50px;
 }
 
-section h2 {
-  margin-bottom: 10px;
-  border-bottom: 2px solid var(--dark2);
-  padding-bottom: 5px;
-}
-
-/* List link styles */
-ul li {
+section#planets ul,
+section#characters ul,
+section#films ul {
   list-style-type: none;
   margin-bottom: 10px;
 }
 
-ul li a {
-  display: block;
-  background-color: var(--light2);
-  color: var(--dark2);
+section#planets a,
+section#characters a,
+section#starships a,
+section#films a {
+  display: inline-block;
   text-decoration: none;
   font-weight: bold;
   padding: 10px 15px;
@@ -142,11 +143,42 @@ button {
   padding: 10px 20px;
   border-radius: 6px;
   border: 1px solid var(--dark2);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: var(--dark2);
+section#producers p {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.1em;
+
+  background-color: var(--invalidlight);
   color: var(--light1);
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--invaliddark);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size: 0.75em;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
