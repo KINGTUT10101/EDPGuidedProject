@@ -224,6 +224,15 @@ button {
   padding: 10px 20px;
   border-radius: 6px;
   border: 1px solid var(--dark2);
+  font-family: inherit;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--dark2);
+  color: var(--light1);
+  transform: translateX(-4px);
+  cursor: pointer;
 }
 
 /* Special producer tags */
