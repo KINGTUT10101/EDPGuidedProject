@@ -74,65 +74,126 @@ label {
   transform: scale(1.05);
 }
 
-/* Character page header */
+/* Shared page headers */
 h1#name, h1#planet-name, h1#title {
   margin: 40px auto;
   text-align: center;
   font-size: 2em;
 }
 
-/* General info boxes */
-#generalInfo {
+/* General info layout */
+#generalInfo,
+#planet-details {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 20px auto;
 }
 
-#crawl_section p,
-#generalInfo p {
+#generalInfo p,
+#planet-details p,
+#crawl_section p {
   padding: 20px;
   margin: 10px;
   background-color: var(--light2);
   color: var(--dark2);
   border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
 }
 
-#generalInfo span {
+#generalInfo span,
+#planet-details span {
   font-weight: bold;
   font-size: 1.1em;
 }
 
-section#planets,
+/* Section spacing */
 section#characters,
-section#films {
-  margin: 50px;
+section#planets,
+section#films,
+section#starships,
+section#producers,
+section#planet-characters,
+section#planet-films,
+section#crawl_section {
+  margin: 40px auto;
+  max-width: 600px;
 }
 
-section#planets ul,
+section#characters h2,
+section#planets h2,
+section#films h2,
+section#starships h2,
+section#producers h2,
+section#planet-characters h2,
+section#planet-films h2,
+section#crawl_section h2 {
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--dark2);
+  padding-bottom: 5px;
+}
+
 section#characters ul,
-section#films ul {
+section#planets ul,
+section#films ul,
+section#starships ul,
+section#producers ul,
+section#planet-characters ul,
+section#planet-films ul {
   list-style-type: none;
+  padding: 0;
   margin-bottom: 10px;
 }
 
-section#planets a,
-section#characters a,
-section#starships a,
-section#films a {
-  display: inline-block;
+/* Link card styles */
+section#characters li a,
+section#planets li a,
+section#films li a,
+section#starships li a,
+section#planet-characters li a,
+section#planet-films li a {
+  display: block;
+  background-color: var(--light2);
+  color: var(--dark2);
   text-decoration: none;
   font-weight: bold;
   padding: 10px 15px;
+  margin: 8px 0;
   border-radius: 8px;
   border: 1px solid var(--dark2);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-ul li a:hover {
+section#characters li a:hover,
+section#planets li a:hover,
+section#films li a:hover,
+section#starships li a:hover,
+section#planet-characters li a:hover,
+section#planet-films li a:hover {
   background-color: var(--dark2);
   color: var(--light1);
   transform: translateX(4px);
+}
+
+/* Back to Characters button */
+a.back-button {
+  display: inline-block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: var(--light2);
+  color: var(--dark2);
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid var(--dark2);
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a.back-button:hover {
+  background-color: var(--dark2);
+  color: var(--light1);
+  transform: translateX(-4px);
 }
 
 /* Buttons (if used) */
@@ -145,11 +206,11 @@ button {
   border: 1px solid var(--dark2);
 }
 
+/* Special producer tags */
 section#producers p {
   display: inline-block;
   text-decoration: none;
   font-size: 1.1em;
-
   background-color: var(--invalidlight);
   color: var(--light1);
   font-weight: bold;
@@ -159,6 +220,7 @@ section#producers p {
   border: 1px solid var(--invaliddark);
 }
 
+/* Tooltip */
 .tooltip {
   position: relative;
   display: inline-block;
@@ -174,11 +236,21 @@ section#producers p {
   padding: 5px 0;
   border-radius: 6px;
   font-size: 0.75em;
- 
   position: absolute;
   z-index: 1;
 }
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+/* Original crawl style preserved */
+section#crawl_section span#opening_crawl {
+  display: block;
+  white-space: pre-line;
+  margin-top: 20px;
+  font-style: italic;
+  font-size: 1em;
+  line-height: 1.7;
+  color: var(--dark2);
 }
