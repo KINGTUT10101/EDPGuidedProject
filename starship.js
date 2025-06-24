@@ -69,6 +69,7 @@ const renderStarship
 
             const obiWanImpossibleImg = document.createElement("img")
             obiWanImpossibleImg.src = "images/obiwanimpossible.jpg"
+            obiWanImpossibleImg.style.maxWidth = "100%"
 
             pilotsList.appendChild(noPilotsMessage);
             pilotsList.appendChild(obiWanImpossibleImg);
