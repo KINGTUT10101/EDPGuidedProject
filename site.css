@@ -1,36 +1,28 @@
-body,
-div,
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
+/* Reset */
+body, div, h1, h2, h3, h4, h5, p, ul {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
   font-family: Arial, Helvetica, sans-serif;
-  --dark1: black;
-  --light1: white;
-  --dark2: darkblue;
-  --light2: lightblue;
+  --dark1: #111;
+  --light1: #fff;
+  --dark2: #003366;
+  --light2: #cce0ff;
   --invalidlight: red;
   --invaliddark: darkred;
   background-color: var(--light1);
   color: var(--dark1);
 }
 
-button {
-  background-color: var(--light2);
-  color: var(--dark2);
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--dark2);
+body {
+  line-height: 1.6;
+  padding: 20px;
 }
 
+/* Input styling */
 input {
   display: block;
   width: 95%;
@@ -40,7 +32,7 @@ input {
   border: none;
   border-bottom: 2px solid var(--dark2);
   outline: none;
-  margin: 5px;
+  margin: 10px 0;
 }
 
 label {
@@ -53,44 +45,57 @@ label {
   font-weight: normal;
 }
 
-/* Characters */
+/* Character list layout */
 #contentList,
 #charactersList {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 0;
+  margin-top: 20px;
 }
 
 #contentList div,
 #charactersList div {
-  padding: 10px;
+  padding: 10px 15px;
   margin: 10px;
   border: 1px solid var(--dark2);
-  border-radius: 5px;
-  color: var(--dark2);
+  border-radius: 8px;
   background-color: var(--light2);
+  color: var(--dark2);
   font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Character page */
-h1#name {
-  margin: 50px;
+#charactersList div:hover {
+  background-color: var(--dark2);
+  color: var(--light1);
+  transform: scale(1.05);
 }
 
+/* Character page header */
+h1#name, h1#planet-name, h1#title {
+  margin: 40px auto;
+  text-align: center;
+  font-size: 2em;
+}
+
+/* General info boxes */
 #generalInfo {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  border: 20px;
+  margin: 20px auto;
 }
 
 #crawl_section p,
 #generalInfo p {
   padding: 20px;
   margin: 10px;
-  color: var(--dark2);
   background-color: var(--light2);
+  color: var(--dark2);
+  border-radius: 8px;
 }
 
 #generalInfo span {
@@ -100,20 +105,15 @@ h1#name {
 
 section#planets,
 section#characters,
-section#producers,
-section#starships,
-section#crawl_section,
 section#films {
   margin: 50px;
 }
 
 section#planets ul,
 section#characters ul,
-section#producers ul,
-section#starships ul,
 section#films ul {
   list-style-type: none;
-  padding: 0;
+  margin-bottom: 10px;
 }
 
 section#planets a,
@@ -122,14 +122,26 @@ section#starships a,
 section#films a {
   display: inline-block;
   text-decoration: none;
-  font-size: 1.1em;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--dark2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
+ul li a:hover {
+  background-color: var(--dark2);
+  color: var(--light1);
+  transform: translateX(4px);
+}
+
+/* Buttons (if used) */
+button {
   background-color: var(--light2);
   color: var(--dark2);
   font-weight: bold;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border-radius: 6px;
   border: 1px solid var(--dark2);
 }
 
