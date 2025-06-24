@@ -14,17 +14,17 @@ addEventListener('DOMContentLoaded', () => {
 
     const sp = new URLSearchParams(window.location.search)
     const id = sp.get('id')
-    getStarship(id)
+    getStarshipInformation(id)
 });
 
-async function getStarship(id) {
+async function getStarshipInformation(id) {
     let starship;
     let pilots;
 
     try {
-        starship = await fetchStarshipId(id)
+        starship = await fetchStarshipFromAPI(id)
 
-        pilots = await fetchShipPilots(id
+        pilots = await fetchStarshipPilotsFromAPI(id
 
         )
     }
@@ -35,13 +35,13 @@ async function getStarship(id) {
     renderStarship(starship, pilots);
 
 }
-async function fetchStarshipId(id) {
+async function fetchStarshipFromAPI (id) {
     let starshipUrl = `${baseUrl}/starships/${id}`;
     return await fetch(starshipUrl)
         .then(res => res.json())
 }
 
-async function fetchShipPilots(id) {
+async function fetchStarshipPilotsFromAPI(id) {
     let pilotsUrl = `${baseUrl}/starships/${id}/characters`;
     return await fetch(pilotsUrl)
         .then(res => res.json())
@@ -49,8 +49,7 @@ async function fetchShipPilots(id) {
 
 }
 
-const renderStarship
-    = (starship, pilots) => {
+function renderStarship (starship, pilots) {
         document.title = `SWAPI - ${starship
             ?.starship_class}`;
         mglt.textContent = starship
